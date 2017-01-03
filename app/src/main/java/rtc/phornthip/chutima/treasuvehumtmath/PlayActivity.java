@@ -22,8 +22,6 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
     private Random random;
     private int firstAnInt, secondAnInt, answerAnInt, trueChoiceAnInt, scoreAnInt = 0;
     private int timeAnInt = 30; // นี่คือเวลาลูป
-    private ImageView boat1ImageView, boat2ImageView, boat3ImageView, boat4ImageView;
-    private ImageView[] imageViews;
     private int falseAnInt = 0;
     private ImageView[] boatImageViews = new ImageView[4];
     private int[] widgitImageInts = new int[]{R.id.imageView3, R.id.imageView4,
@@ -37,24 +35,7 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
         random = new Random();
 
         //Bind widget
-        questTextView = (TextView) findViewById(R.id.textView5);
-        ch1TextView = (TextView) findViewById(R.id.textView2);
-        ch2TextView = (TextView) findViewById(R.id.textView3);
-        ch3TextView = (TextView) findViewById(R.id.textView4);
-        scoreTextView = (TextView) findViewById(R.id.textView6);
-        timeTextView = (TextView) findViewById(R.id.textView7);
-//        boat1ImageView = (ImageView) findViewById(R.id.imageView3);
-//        boat2ImageView = (ImageView) findViewById(R.id.imageView4);
-//        boat3ImageView = (ImageView) findViewById(R.id.imageView5);
-//        boat4ImageView = (ImageView) findViewById(R.id.imageView6);
-
-        for (int i=0;i<boatImageViews.length;i++) {
-            boatImageViews[i] = (ImageView) findViewById(widgitImageInts[i]);
-        }
-
-        imageViews = new ImageView[]{boat1ImageView, boat2ImageView, boat3ImageView,
-                boat4ImageView};
-
+        bindWidget();
 
         //Choice Controller
 
@@ -68,6 +49,19 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
 
 
     }//Main Method
+
+    private void bindWidget() {
+        questTextView = (TextView) findViewById(R.id.textView5);
+        ch1TextView = (TextView) findViewById(R.id.textView2);
+        ch2TextView = (TextView) findViewById(R.id.textView3);
+        ch3TextView = (TextView) findViewById(R.id.textView4);
+        scoreTextView = (TextView) findViewById(R.id.textView6);
+        timeTextView = (TextView) findViewById(R.id.textView7);
+
+        for (int i=0;i<boatImageViews.length;i++) {
+            boatImageViews[i] = (ImageView) findViewById(widgitImageInts[i]);
+        }
+    }
 
     private void countTime() {
         timeAnInt -= 1;
