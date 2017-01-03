@@ -19,9 +19,9 @@
         <activity android:name=".StatPlay" />
         <activity android:name=".Cartoon1" />
         <activity android:name=".Cartoon2" />
-
-
-
+        <activity android:name=".Section2" />
+        <activity android:name=".Section3" />
+        <activity android:name=".SuccessGame"></activity>
     </application>
 
 </manifest>
