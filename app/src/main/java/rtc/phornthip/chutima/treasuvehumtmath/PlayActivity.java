@@ -26,6 +26,7 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
     private ImageView[] boatImageViews = new ImageView[4];
     private int[] widgitImageInts = new int[]{R.id.imageView3, R.id.imageView4,
             R.id.imageView5, R.id.imageView6};
+    private boolean aBoolean = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +46,7 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
 
         playController();
 
-        //countTime();
+        countTime();
 
 
     }//Main Method
@@ -64,15 +65,13 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void countTime() {
+
         timeAnInt -= 1;
         timeTextView.setText(Integer.toString(timeAnInt) + "วินาที");
        if (timeAnInt < 0) {
             //สิ่งที่จะทำหลังเวลาหมด
-
-
-           myRestartApp();
-
-
+           aBoolean = false;
+           myAlertDialog("เวลาหมด", "เวลาหมด เริ่มเกมร์ ใหม่");
         }  //if
 
 
@@ -80,7 +79,9 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                countTime();
+                if (aBoolean) {
+                    countTime();
+                }
             }
         }, 1000);
 
@@ -157,7 +158,7 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
 
             if (falseAnInt >= 3) {
                 Toast.makeText(PlayActivity.this, "Game Over", Toast.LENGTH_SHORT).show();
-
+                aBoolean = false;
                 myAlertDialog("ผิดเกิน 3 ข้อ", "คุณผิดมากกว่า 3 ข้อ ให้เริ่มเล่นใหม่");
 
 
